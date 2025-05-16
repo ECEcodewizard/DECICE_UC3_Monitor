@@ -1,5 +1,6 @@
 # Use the official ROS 2 Foxy Desktop base image
-FROM osrf/ros:foxy-desktop
+#FROM osrf/ros:foxy-desktop
+FROM ros:humble
 
 # Set the working directory
 WORKDIR /app
@@ -23,8 +24,8 @@ RUN pip install --upgrade pip setuptools wheel colcon-common-extensions promethe
 
 # Setup ROS2 workspace
 RUN mkdir -p /app/ros2_ws/src && cd /app/ros2_ws && \
-    git clone -b foxy https://github.com/ros2/rclpy.git src/rclpy && \
-    bash -c "source /opt/ros/foxy/setup.bash && colcon build --symlink-install --packages-select rclpy" && \
+    git clone -b humble https://github.com/ros2/rclpy.git src/rclpy && \
+    bash -c "source /opt/ros/humble/setup.bash && colcon build --symlink-install --packages-select rclpy" && \
     echo "source /app/ros2_ws/install/setup.bash" >> /app/venv/bin/activate
 
 # Copy application files

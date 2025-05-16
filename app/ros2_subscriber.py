@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String  # Change this to match your topic type
+#from std_msgs.msg import Float32
 import json
 import os
 
@@ -11,7 +12,8 @@ class ROS2Subscriber(Node):
         super().__init__("ros2_json_collector")
         self.subscription = self.create_subscription(
             String,  # Change to the correct message type
-            "sensor_data",  # Change to your ROS2 topic name
+            #"sensor_data",  # Change to your ROS2 topic name
+            "/image_processor/latency_feedback",
             self.listener_callback,
             10
         )
