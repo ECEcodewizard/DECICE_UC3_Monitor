@@ -18,6 +18,7 @@ spec:
       containers:
         - name: uc3-exporter
           image: kazemi/uc3-monitoring:latest  # Replace with your image
+          #ecewizard/uc3-monitoring:latest
           ports:
             - containerPort: 8001
           volumeMounts:
@@ -27,6 +28,11 @@ spec:
         - name: data-volume
           hostPath:
             path: /mnt/data  # Change this based on where your JSON data is stored
+            #path: /home/yaser/yaser_codes/data
+            
+      #volumes:                 #Create a temporary folder inside each pod
+      #  - name: data-volume
+      #    emptyDir: {}
 
 ---
 apiVersion: v1

@@ -21,7 +21,8 @@ class ROS2Subscriber(Node):
 
     def listener_callback(self, msg):
         """Callback function that saves received ROS2 message as JSON."""
-        data = {"sensor_data": msg.data}
+        #data = {"sensor_data": msg.data}
+        data = {"image_latency_feedback": msg.data}
         with open(DATA_FILE, "w") as file:
             json.dump(data, file)
         self.get_logger().info(f"Saved data: {data}")
